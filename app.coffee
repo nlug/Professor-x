@@ -69,6 +69,7 @@ app.get '/:id/suggest', (req, res) ->
         else 
             Xmen.find({UID: $ne: req.params.id}).lean().exec (error, others) ->
                 # tinh diem giong nhau
+                returnArray = []
                 for xmen in others
                     xmen.score = getSameScore(curXmen.like, xmen.like)
                     console.log "#{xmen.name} got score #{xmen.score}"
@@ -77,16 +78,21 @@ app.get '/:id/suggest', (req, res) ->
                         listSuggest = _.difference xmen.like, curXmen.like
                         console.log "#{xmen.name} like differ list", listSuggest
                         for people in listSuggest
-                            index = _.findIndex(others, {UID: people})
-                            console.log "Calculate score for #{people.name} index at #{index}"
-                            if (others[index].suggestScore) 
-                                others[index].suggestScore += xmen.score;
-                            else
-                                others[index].suggestScore = xmen.score;
-                            console.log "#{xmen.name} suggest #{others[index].name} for #{others[index].suggestScore}"
+                            if people != curXmen.UID && curXmen.indexOf(people)
+                                index = _.findIndex(others, {UID: people})
+                                console.log "Calculate score for #{people.name} index at #{index}"
+                                if (others[index].suggestScore) 
+                                    others[index].suggestScore += xmen.score;
+                                else
+                                    others[index].suggestScore = xmen.score;
+                                console.log "#{xmen.name} suggest #{others[index].name} for #{others[index].suggestScore}"
                 # Sap xep theo diem
-                sorted = _.sortBy(others, ['suggestScore','score']) # sap xep theo suggestScore roi toi score
-                sorted = _.reverse(sorted) # mac dinh no sap tu be den lon, minh doi nguoc lai
+                sorted = _.sortBy others, ['suggestScore','score'] # sap xep theo suggestScore roi toi score
+                sorted = _.reverse sorted # mac dinh no sap tu be den lon, minh doi nguoc lai
+                # Loc ket qua
+                sorted = _.reject sorted, (xmen) ->
+                    return (xmen.suggestScore == xmen.score == 0) || curXmen.like.indexOf(xmen.UID) >= 0
+                
                 res.json sorted
 
 app.get '/:id/suggest2', (req, res) ->
