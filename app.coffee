@@ -73,7 +73,7 @@ app.get '/:id/suggest', (req, res) ->
                     xmen.score = getSameScore(curXmen.like, xmen.like)
                     console.log "#{xmen.name} got score #{xmen.score}"
                     xmen.suggestScore = 0 if !xmen.suggestScore
-                    if xmen.score > 0.2 # Diem toi thieu de co cung tinh cach
+                    if xmen.score > 0.2 # Diem toi thieu giong nhau de co the dua ra goi y
                         listSuggest = _.difference xmen.like, curXmen.like
                         console.log "#{xmen.name} like differ list", listSuggest
                         for people in listSuggest
@@ -85,7 +85,7 @@ app.get '/:id/suggest', (req, res) ->
                                 others[index].suggestScore = xmen.score;
                             console.log "#{xmen.name} suggest #{others[index].name} for #{others[index].suggestScore}"
                 # Sap xep theo diem
-                sorted = _.sortBy(others, ['suggestScore','score']) # sap xep theo score
+                sorted = _.sortBy(others, ['suggestScore','score']) # sap xep theo suggestScore roi toi score
                 sorted = _.reverse(sorted) # mac dinh no sap tu be den lon, minh doi nguoc lai
                 res.json sorted
 
