@@ -5,6 +5,6 @@ API tìm phòng cho các dị nhân giúp đỡ bác giáo sư X
     cd Professor-x
     npm install
 # Chạy thử
-coffee app.coffee
+        coffee app.coffee
 
 *Gửi tới các bạn bởi [CuThanh](http://cuthanh.com)*
