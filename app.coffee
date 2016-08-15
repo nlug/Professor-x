@@ -78,7 +78,7 @@ app.get '/:id/suggest', (req, res) ->
                         listSuggest = _.difference xmen.like, curXmen.like
                         console.log "#{xmen.name} like differ list", listSuggest
                         for people in listSuggest
-                            if people != curXmen.UID && curXmen.indexOf(people)
+                            if people != curXmen.UID && curXmen.like.indexOf(people) # Loai bo nhung thang da thich ra
                                 index = _.findIndex(others, {UID: people})
                                 console.log "Calculate score for #{people.name} index at #{index}"
                                 if (others[index].suggestScore) 
