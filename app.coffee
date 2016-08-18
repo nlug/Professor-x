@@ -37,12 +37,14 @@ app.get '/install', (req, res) ->
         {name: 'Professor X', avatar: 'images/professorx.jpg'},
         {name: 'Quick Silver', avatar: 'images/quicksilver.jpg'}
     ];
-    Xmen.insertMany(insertData, (error, data) ->
-        if (error) 
-            console.log (error)
-        if (data) 
-            res.end ('Setup Ok!')
-    )
+    for xmen in insertData
+        term = new Xmen
+            name: xmen.name
+            avatar: xmen.avatar
+        term.save (error) ->
+            throw error if error
+
+    res.end ('Setup Ok!')
 
 app.get '/xmen', (req, res) ->
     Xmen.find().exec (error, data) ->
