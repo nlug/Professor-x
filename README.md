@@ -7,4 +7,6 @@ API tìm phòng cho các dị nhân giúp đỡ bác giáo sư X
 # Chạy thử
     coffee app.coffee
 
+Truy cập [http://localhost:27000/install](http://localhost:27000/install) để thêm một vài Xmen mẫu
+
 *Gửi tới các bạn bởi [CuThanh](http://cuthanh.com)*
