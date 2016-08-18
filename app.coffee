@@ -24,6 +24,26 @@ getSameScore = (a, b) ->
     intersection = _.intersection a, b
     return intersection.length/sum.length
 
+app.get '/install', (req, res) ->
+    insertData = [
+        {name: 'Wolverine', avatar: 'images/wolverine.jpg'},
+        {name: 'Beast', avatar: 'images/beast.jpg'},
+        {name: 'Blink', avatar: 'images/blink.jpg'},
+        {name: 'Cyclop', avatar: 'images/cyclop.jpg'},
+        {name: 'Jean', avatar: 'images/jeangray.jpg'},
+        {name: 'Kitty', avatar: 'images/kitty.jpg'},
+        {name: 'Magneto', avatar: 'images/magneto.jpg'},
+        {name: 'Mystique', avatar: 'images/mystique.jpg'},
+        {name: 'Professor X', avatar: 'images/professorx.jpg'},
+        {name: 'Quick Silver', avatar: 'images/quicksilver.jpg'}
+    ];
+    Xmen.insertMany(insertData, (error, data) ->
+        if (error) 
+            console.log (error)
+        if (data) 
+            res.end ('Setup Ok!')
+    )
+
 app.get '/xmen', (req, res) ->
     Xmen.find().exec (error, data) ->
         res.json data
@@ -60,7 +80,6 @@ app.post '/:id/like', (req, res) ->
             data.save()
             
             res.status(201).end('OK');
-
             
 app.get '/:id/suggest', (req, res) ->
     Xmen.findOne({UID: req.params.id}).exec (error, curXmen) ->
