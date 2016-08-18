@@ -1,0 +1,27 @@
+{
+  "name": "projectx",
+  "version": "1.0.0",
+  "description": "API tìm phòng cho các dị nhân giúp đỡ bác giáo sư X\r # Hướng dẫn cài đặt\r     git clone https://github.com/nlug/Professor-x\r     cd Professor-x\r     npm install\r # Chạy thử\r     coffee app.coffee",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "mongoose": "^4.5.9",
+    "mongoose-sequence": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlug/Professor-x.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nlug/Professor-x/issues"
+  },
+  "homepage": "https://github.com/nlug/Professor-x#readme"
+}
