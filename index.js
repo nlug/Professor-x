@@ -43,7 +43,7 @@ const executableSchema = makeExecutableSchema({
   typeDefs: schema,
   resolvers,
 });
-app.use('/graphql', graphqlExpress({ schema: executableSchema, debug: true }));
+app.use('/graphql', graphqlExpress({ schema: executableSchema, debug: true, context: {req: {UID: 1}} }));
 app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql',
 }));
