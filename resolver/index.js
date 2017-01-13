@@ -22,10 +22,10 @@ export default {
                 return _.save()
             })
         },
-        addXmen (obj, {name, avatar}, context) {
+        addXmen (obj, {input}, context) {
             const newXmen = new Xmen({
-                name,
-                avatar
+                name: input.name,
+                avatar: input.avatar
             })
             return newXmen.save()
         }
