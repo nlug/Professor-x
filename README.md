@@ -5,7 +5,7 @@ API tìm phòng cho các dị nhân giúp đỡ bác giáo sư X
     cd Professor-x
     npm install
 # Chạy thử
-    coffee app.coffee
+    npm start
 
 Truy cập [http://localhost:27000/install](http://localhost:27000/install) để thêm một vài Xmen mẫu
 
