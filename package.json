@@ -6,13 +6,27 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "graphql": "^0.8.2",
+    "graphql-server-express": "^0.4.3",
+    "graphql-tools": "^0.9.0",
     "lodash": "^4.15.0",
     "mongoose": "^4.5.9",
     "mongoose-sequence": "^3.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "6.16.0",
+    "babel-core": "6.20.0",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.2.9",
+    "babel-preset-es2015": "6.16.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-2": "6.17.0",
+    "babel-register": "6.16.3",
+    "nodemon": "1.11.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js --watch ./ --exec babel-node"
   },
   "repository": {
     "type": "git",
