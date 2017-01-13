@@ -29,7 +29,9 @@ app.use(function(req, res, next) {
   return next();
 });
 
-
+/**
+ * GraphQL
+ */
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import rootSchema from './schema/index'
@@ -48,7 +50,9 @@ app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql',
 }));
 
-
+/**
+ * Restful API
+ */
 Xmen = require('./models/xmen');
 
 getSameScore = function(a, b) {
